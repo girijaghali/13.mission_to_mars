@@ -67,14 +67,20 @@
             <div class="row">
               <div class="col-md-12">  
                 <h3 class="text-center"> Mars Hemispheres </h3>
+                <hr>
               </div>
             </div>
           </div>
           <div class="panel-body">
             <div class="col-md-12"></div>
               {% for hemisphere in marsData.Hemisphere %}
-              <div style="margin-top:20px" class="col-md-6">
-              <img src={{ hemisphere.img_url }} alt={{ hemisphere.title}} class="img-responsive" >
+              <div style="margin-top:30px" class="col-md-6" >
+                  <div class="panel panel=default">
+                  <figure>
+                  <img src={{ hemisphere.img_url }} alt="{{ hemisphere.title}}" class="img-responsive" >
+                  <figcaption style="font-size:18px">{{ hemisphere.title}} </figcaption>
+                  </figure>
+                </div>
               </div> 
               {% endfor %}
           </div>  
