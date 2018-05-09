@@ -1,38 +1,33 @@
 from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
-import pymongo
 import scrape_mars
 
 app = Flask(__name__)
 
-conn = 'mongodb+srv://gghali:m001-mongodb-basics@cluster0-6epwg.mongodb.net/test'
-client = pymongo.MongoClient(conn) 
-mars_db=client.marsScrape_DB
-collection = mars_db.marsData
+mongo = PyMongo(app)
+
 
 
 @app.route("/")
 def index():
-    marsScrape_Data = mars_db.marsData.find_one()
+    marsScrape_Data = mongo.db.marsScrape_DB.find_one()
     return render_template("index.html", marsData=marsScrape_Data)
 
 
 @app.route("/scrape")
 def scrape():
+    marsScrape_DB = mongo.db.marsScrape_DB
+    #marsScrape_DB = db.marsScrape_DB
     mars_data = scrape_mars.scrape()
-    marsD = mars_db.marsData
-    marsD.update(
+    print(mars_data)
+    marsScrape_DB.update(
         {},
         mars_data,
         upsert=True
     )
-
-
     return redirect("http://localhost:5000/", code=302)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# code to connect without Atlas
 
