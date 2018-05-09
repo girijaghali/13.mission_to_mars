@@ -80,6 +80,7 @@ hemisphere_image_urls = [
 
 Used MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URLs above.
 * to deploy this web application as a standalone application, mongoDB should be either deployed in Heroku or mongo Atlas can be used. (else the code will be look for mongo local server )
+* In this module I have decided to use the mongo Atlas database. 
 
 * Converted the Jupyter notebook from step-1 into a Python script called `scrape_mars.py` with a function called `scrape` that will execute all of the scraping code from above and return one Python dictionary containing all of the scraped data.
 
@@ -98,7 +99,7 @@ Used MongoDB with Flask templating to create a new HTML page that displays all o
 
 ---
 
-## Extas
+## Extras
 
 * Used splinter to navigate the sites when needed and BeautifulSoup to help find and parse out the necessary data.
 
