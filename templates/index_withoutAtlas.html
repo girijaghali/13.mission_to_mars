@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars News</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+<!--Row1 : Heading, Button-->
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars </h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Find Latest news on MARS</a></p>
+    </div>
+<!--Row2: Latest Mars News-->
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+          <div class="panel-body">
+            <h3 style="text-align: left">Latest Mars News</h3>
+            <h4>{{ marsData.NewsTitle }}</h4>
+            <p>{{ marsData.NewsP }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Row3: FeaturedImage , CurrentWeather, MarsFacts-->  
+    <!--Featured Mars Image-->
+    <div class="row" id="mars-details">
+      <div class="col-md-8" id="mars-featured-img">
+          <h3 class="heading">Featured Mars Image</h3>
+          <img src={{ marsData.FeaturesImage }} alt="..."  class="img-responsive" style="width:42" style="height:42">
+      </div>   
+      <div class="col-md-4" id="mars-weather-facts">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                     <h6>Current Weather on Mars</h6>
+                     <p style="font-size:10px">{{ marsData.MarsWeather }}</p>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div>
+              <div class="panel-body" style="font-size:10px"> 
+                <h6>Mars Facts</h6>
+                    {{ marsData.Mars_Facts|safe }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br> <br> <br>
+<!--Row4: Mars Hemishperes-->  
+    <div class="row">
+      <div clas="col-md-12">
+        <div class="panel panel=default">
+          <div class="panel-header">
+            <div class="row">
+              <div class="col-md-12">  
+                <h3 class="text-center"> Mars Hemispheres </h3>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="col-md-12"></div>
+              {% for hemisphere in marsData.Hemisphere %}
+              <div style="margin-top:30px" class="col-md-6" >
+                  <div class="panel panel=default">
+                  <figure>
+                  <img src={{ hemisphere.img_url }} alt="{{ hemisphere.title}}" class="img-responsive" >
+                  <figcaption style="font-size:18px">{{ hemisphere.title}} </figcaption>
+                  </figure>
+                </div>
+              </div> 
+              {% endfor %}
+          </div>  
+        </div>
+      </div> 
+    </div>
+
+
+
+  </div>
+</body>
+
+</html>
+
