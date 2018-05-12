@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
 import pymongo
 import scrape_mars
+import config
 
 import os
 #cwd = os.getcwd()
@@ -9,7 +10,7 @@ import os
 
 app = Flask(__name__)
 
-conn = 'mongodb+srv://gghali:m001-mongodb-basics@cluster0-6epwg.mongodb.net/test'
+conn = 'mongodb+srv://gghali:' + config.pwd + '@cluster0-6epwg.mongodb.net/test'
 client = pymongo.MongoClient(conn) 
 mars_db=client.marsScrape_DB
 collection = mars_db.marsData
